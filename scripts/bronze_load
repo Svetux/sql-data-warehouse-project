@@ -1,0 +1,14 @@
+CREATE OR ALTER PROCEDURE bronze.load_bronze AS
+BEGIN
+PRINT '""""""""""""""""""""""""""""""""'
+PRINT 'Loading Bronze layer'
+PRINT '""""""""""""""""""""""""""""""""'
+	TRUNCATE TABLE bronze.erp_px_cat_g1v2
+	BULK INSERT bronze.erp_px_cat_g1v2
+	FROM 'C:\Users\Svetux\Desktop\SQL\sql-data-warehouse-project\datasets\source_erp\px_cat_g1v2.csv'
+	WITH (
+	FIRSTROW = 2,
+	FIELDTERMINATOR = ',',
+	TABLOCK
+	);
+END
